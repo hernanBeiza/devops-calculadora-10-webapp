@@ -5,6 +5,8 @@ import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalculator } from '@fortawesome/free-solid-svg-icons'
 
+import CalculoService from './../../services/CalculoService';
+
 import Resultado from './../resultado/Resultado';
 
 function Calculo() {
@@ -19,8 +21,8 @@ function Calculo() {
   }, [sueldo, saldo]);
 
   const validarFormulario = () => {
-  	console.log("validarFormulario");
-  	console.log(desactivado,sueldo,saldo);
+  	//console.log("validarFormulario");
+  	//console.log(desactivado,sueldo,saldo);
     if (sueldo == 0) {
       //setMensajeError('sueldo cant be blank!')
       return false;
@@ -34,26 +36,25 @@ function Calculo() {
 
 	const enviar = (e) => {
     e.preventDefault();
-		console.log("enviar");
-		console.log(sueldo,saldo);
-
+		//console.log("enviar");
+		//console.log(sueldo,saldo);
 		//Luego de la llamada al ms#
-		setResultado(10000);
-		/*
-		let calculoService = new CalculoService();
     setCargando(true);
-    dispatch(iniciarCarga());
-    calculoService.calcular(usuario,contrasena).then(data=>{
-      console.log(data);
-      if(data.result){
+		let calculoService = new CalculoService();
 
+    calculoService.calcular(sueldo,saldo).then(data=>{
+      console.log(data);
+      setCargando(false);
+      if(data.result){
+        //Pasar el resultado usando setResultado(data.algo)
+        setResultado(10000);
       } else {
 
       }
     }).catch(error=>{
       console.error(error);
+      setCargando(false);
     });
-    */
 	}
 
 	const limpiar = () => {

@@ -1,4 +1,3 @@
-import LocalDBService from './local-db.service';
 
 class CalculoService {
 
@@ -7,20 +6,21 @@ class CalculoService {
 	}
 
 	async calcular(sueldo,saldo){
-		console.log("LoginService: calcular();");
+		console.log("calcular();");
 		console.log(sueldo,saldo);
-
+    /*
     var formData = new FormData();
-    formData.append('usuario', usuario);
-    formData.append('contrasena', contrasena);
+    formData.append('param1', param1);
+    formData.append('param2', param2);
+    */
 
-    var url = "http://localhost:4000/login"
+    var url = "https://pokeapi.co/api/v2/type/3";
     var options = {
       method: 'GET',
       headers: new Headers({
-        //'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/json'
       }),
-      body:formData
+      //body:formData
     }
 
     return fetch(url,options).then(function(response) {
@@ -45,6 +45,5 @@ class CalculoService {
 	}
 
 }
-
 
 export default CalculoService
