@@ -12,9 +12,13 @@ import Resultado from './../resultado/Resultado';
 function Calculo() {
   const [desactivado, setDesactivado] = useState(false);
   const [estaCargando, setCargando] = useState(false);
+  const [mostrarResultado, setMostrarResultado] = useState(false);
   const [sueldo, setSueldo] = useState(0)
   const [saldo, setSaldo] = useState(0)
-  const [resultado, setResultado] = useState(0);
+
+  const [porcentaje, setPorcentaje] = useState(0);
+  const [saldoRestante, setSaldoRestante] = useState(0);
+  const [impuesto, setImpuesto] = useState(0);
 
   useEffect(() => {
     setDesactivado( validarFormulario() )
@@ -45,12 +49,8 @@ function Calculo() {
     calculoService.calcular(sueldo,saldo).then(data=>{
       console.log(data);
       setCargando(false);
-      if(data.result){
-        //Pasar el resultado usando setResultado(data.algo)
-        setResultado(10000);
-      } else {
-
-      }
+      setMostrarResultado(true);
+      //Pasar porcentaje,saldoRestante e impuestos
     }).catch(error=>{
       console.error(error);
       setCargando(false);
@@ -61,7 +61,10 @@ function Calculo() {
 		console.log("limpiar");
 		setSueldo(0);
 		setSaldo(0);
-		setResultado(0);
+    setMostrarResultado(false);
+		setPorcentaje(0);
+    setSaldoRestante(0);
+    setImpuesto(0);
 	}
 
   return (
@@ -90,7 +93,8 @@ function Calculo() {
             <Row>
               <Col>
                 <Button block id="botonEnviar" variant="primary" type="submit" disabled={ !desactivado || estaCargando }>
-                  <FontAwesomeIcon icon={faCalculator} style={{marginRight: "5"}} />Calcular
+                  {estaCargando ? <span><Spinner size="sm" animation="border"/>Calculando... </span> : 
+                  <span> <FontAwesomeIcon icon={faCalculator} style={{marginRight: "5"}} />Calcular</span>}
                 </Button>
               </Col>
             </Row>
@@ -99,7 +103,7 @@ function Calculo() {
 	    </Row>
 	    <Row>
 	    	<Col>
-					<Resultado resultado={resultado} onLimpiar={limpiar}/>
+					<Resultado mostrarResultado={mostrarResultado} porcentaje={porcentaje} saldoRestante={saldoRestante} impuesto={impuesto} onLimpiar={limpiar}/>
 				</Col>
 			</Row>
     </div>

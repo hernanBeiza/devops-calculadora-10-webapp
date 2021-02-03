@@ -7,7 +7,8 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import './Resultado.css';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
-function Resultado({resultado, onLimpiar}) {
+function Resultado({mostrarResultado, porcentaje,saldo,impuesto, onLimpiar}) {
+  console.log(mostrarResultado, porcentaje, saldo, impuesto);
   const myRef = useRef(null)
 
   const onScrollToMe = () => {
@@ -18,10 +19,10 @@ function Resultado({resultado, onLimpiar}) {
   const [variant,setVariant] = useState("primary");
   useEffect(() => {
     onScrollToMe();
-  }, [resultado]);
+  }, [mostrarResultado]);
 
 
-  if(resultado!=0){
+  if(mostrarResultado){
     return (
       <div className="Resultado" ref={myRef}>
         <Row>
@@ -32,7 +33,9 @@ function Resultado({resultado, onLimpiar}) {
         <Row>
           <Col xs={12}>
             <Alert variant={variant}>
-              ¡Mostrar acá el resultado!
+              <p>Porcentaje: {porcentaje}</p>
+              <p>Saldo: {saldo}</p>
+              <p>Impuesto: {impuesto}</p>
             </Alert>
           </Col>
           <Col xs={12}>
@@ -53,7 +56,10 @@ function Resultado({resultado, onLimpiar}) {
 }
 
 Resultado.propTypes = {
-  resultado: PropTypes.number,
+  mostrarResultado: PropTypes.bool,
+  porcentaje: PropTypes.number,
+  saldo: PropTypes.number,
+  impuesto: PropTypes.number,
   onLimpiar: PropTypes.func
 }
 
