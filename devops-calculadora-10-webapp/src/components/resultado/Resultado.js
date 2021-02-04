@@ -7,8 +7,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import './Resultado.css';
 import { Container, Row, Col, Form, Button, Alert } from 'react-bootstrap';
 
-function Resultado({mostrarResultado, porcentaje,saldo,impuesto, onLimpiar}) {
-  console.log(mostrarResultado, porcentaje, saldo, impuesto);
+function Resultado({mostrarResultado, porcentaje, saldo, impuesto, onLimpiar}) {
+  //console.log("-----------")
+  //console.log(mostrarResultado, porcentaje, saldo, impuesto);
   const myRef = useRef(null)
 
   const onScrollToMe = () => {
@@ -33,9 +34,9 @@ function Resultado({mostrarResultado, porcentaje,saldo,impuesto, onLimpiar}) {
         <Row>
           <Col xs={12}>
             <Alert variant={variant}>
-              <p>Porcentaje: {porcentaje}</p>
-              <p>Saldo: {saldo}</p>
-              <p>Impuesto: {impuesto}</p>
+              <p>Retiro: {porcentaje}</p>
+              <p>Saldo restante: {saldo}</p>
+              <p>Impuesto a pagar luego del retiro: {impuesto}</p>
             </Alert>
           </Col>
           <Col xs={12}>

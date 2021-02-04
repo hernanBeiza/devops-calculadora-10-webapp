@@ -25,12 +25,12 @@ function Calculo() {
   }, [sueldo, saldo]);
 
   const validarFormulario = () => {
-  	//console.log("validarFormulario");
+  	console.log("validarFormulario");
   	//console.log(desactivado,sueldo,saldo);
-    if (sueldo == 0) {
+    if (sueldo === 0) {
       //setMensajeError('sueldo cant be blank!')
       return false;
-    } else if (saldo == 0) {
+    } else if (saldo === 0) {
       //setMensajeError('saldo cant be blank!')
       return false;
     } else {
@@ -40,15 +40,16 @@ function Calculo() {
 
 	const enviar = (e) => {
     e.preventDefault();
-		//console.log("enviar");
-		//console.log(sueldo,saldo);
+		console.log("enviar: " + sueldo, saldo);
 		//Luego de la llamada al ms#
     setCargando(true);
 		let calculoService = new CalculoService();
 
     calculoService.calcular(sueldo,saldo).then(data=>{
-      console.log(data);
       setCargando(false);
+      setPorcentaje(data.dxc.toLocaleString("es-ES"));
+      setSaldoRestante(data.saldo.toLocaleString("es-ES"));
+      setImpuesto(data.impuesto.toLocaleString("es-ES"));
       setMostrarResultado(true);
       //Pasar porcentaje,saldoRestante e impuestos
     }).catch(error=>{
@@ -103,11 +104,12 @@ function Calculo() {
 	    </Row>
 	    <Row>
 	    	<Col>
-					<Resultado mostrarResultado={mostrarResultado} porcentaje={porcentaje} saldoRestante={saldoRestante} impuesto={impuesto} onLimpiar={limpiar}/>
+					<Resultado mostrarResultado={mostrarResultado} porcentaje={porcentaje} saldo={saldoRestante} impuesto={impuesto} onLimpiar={limpiar}/>
 				</Col>
 			</Row>
     </div>
   );
 }
+
 
 export default Calculo;
