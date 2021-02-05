@@ -44,8 +44,10 @@ function Calculo() {
 		//Luego de la llamada al ms#
     setCargando(true);
 		let calculoService = new CalculoService();
-
-    calculoService.calcular(sueldo,saldo).then(data=>{
+    let today = new Date();
+    var fechaUf = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+    console.log(fechaUf);
+    calculoService.calcular(sueldo,saldo,fechaUf).then(data=>{
       setCargando(false);
       setPorcentaje(data.dxc.toLocaleString("es-ES"));
       setSaldoRestante(data.saldo.toLocaleString("es-ES"));
