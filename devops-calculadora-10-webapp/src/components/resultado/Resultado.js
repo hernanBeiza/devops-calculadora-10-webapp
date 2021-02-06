@@ -34,9 +34,9 @@ function Resultado({mostrarResultado, porcentaje, saldo, impuesto, onLimpiar}) {
         <Row>
           <Col xs={12}>
             <Alert variant={variant}>
-              <p>Retiro: {porcentaje}</p>
-              <p>Saldo restante: {saldo}</p>
-              <p>Impuesto a pagar luego del retiro: {impuesto}</p>
+              <p id='retiro'>Retiro: {porcentaje}</p>
+              <p id='saldo'>Saldo restante: {saldo}</p>
+              <p id='impuesto'>Impuesto a pagar luego del retiro: {impuesto}</p>
             </Alert>
           </Col>
           <Col xs={12}>
