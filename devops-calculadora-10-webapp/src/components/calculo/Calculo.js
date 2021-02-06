@@ -16,9 +16,9 @@ function Calculo() {
   const [sueldo, setSueldo] = useState(0)
   const [saldo, setSaldo] = useState(0)
 
-  const [porcentaje, setPorcentaje] = useState(0);
-  const [saldoRestante, setSaldoRestante] = useState(0);
-  const [impuesto, setImpuesto] = useState(0);
+  const [porcentaje, setPorcentaje] = useState("0");
+  const [saldoRestante, setSaldoRestante] = useState("0");
+  const [impuesto, setImpuesto] = useState("0");
 
   useEffect(() => {
     setDesactivado( validarFormulario() )
@@ -65,9 +65,9 @@ function Calculo() {
 		setSueldo(0);
 		setSaldo(0);
     setMostrarResultado(false);
-		setPorcentaje(0);
-    setSaldoRestante(0);
-    setImpuesto(0);
+		setPorcentaje("0");
+    setSaldoRestante("0");
+    setImpuesto("0");
 	}
 
   return (
