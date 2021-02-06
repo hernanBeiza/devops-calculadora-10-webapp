@@ -5,10 +5,10 @@ class CalculoService {
 		console.log("CalculoService");
 	}
 
-	async calcular(sueldo,saldo){
+	async calcular(sueldo,saldo,fechaUf){
 		//console.log("calcular();");
 		//console.log(sueldo,saldo);
-    var url = '/rest/msdxc/dxc?sueldo='+sueldo+'&ahorro='+saldo;
+    var url = '/rest/msdxc/dxc?sueldo='+sueldo+'&ahorro='+saldo+'&fechaUf='+fechaUf;
     var options = {
       method: 'GET',
       headers: new Headers({
