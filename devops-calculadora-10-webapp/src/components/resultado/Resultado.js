@@ -34,9 +34,17 @@ function Resultado({mostrarResultado, porcentaje, saldo, impuesto, onLimpiar}) {
         <Row>
           <Col xs={12}>
             <Alert variant={variant}>
-              <p id='retiro'>Retiro: {porcentaje}</p>
-              <p id='saldo'>Saldo restante: {saldo}</p>
-              <p id='impuesto'>Impuesto a pagar luego del retiro: {impuesto}</p>
+              <p>
+                <span>Retiro: </span> 
+                <span id="retiro">{porcentaje}</span></p>
+              <p>
+                <span>Saldo restante: </span>
+                <span  id='saldo'>{saldo}</span>
+              </p>
+              <p>
+                <span>Impuesto a pagar luego del retiro: </span>
+                <span id='impuesto'>{impuesto}</span>
+              </p>
             </Alert>
           </Col>
           <Col xs={12}>
@@ -58,9 +66,9 @@ function Resultado({mostrarResultado, porcentaje, saldo, impuesto, onLimpiar}) {
 
 Resultado.propTypes = {
   mostrarResultado: PropTypes.bool,
-  porcentaje: PropTypes.number,
-  saldo: PropTypes.number,
-  impuesto: PropTypes.number,
+  porcentaje: PropTypes.string,
+  saldo: PropTypes.string,
+  impuesto: PropTypes.string,
   onLimpiar: PropTypes.func
 }
 
