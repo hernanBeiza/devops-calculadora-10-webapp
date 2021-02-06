@@ -36,14 +36,14 @@ function Resultado({mostrarResultado, porcentaje, saldo, impuesto, onLimpiar}) {
             <Alert variant={variant}>
               <p>
                 <span>Retiro: </span> 
-                <span id="retiro">{porcentaje}</span></p>
+                <span className="font-weight-bold" id="retiro">{porcentaje}</span></p>
               <p>
                 <span>Saldo restante: </span>
-                <span  id='saldo'>{saldo}</span>
+                <span className="font-weight-bold" id='saldo'>{saldo}</span>
               </p>
               <p>
                 <span>Impuesto a pagar luego del retiro: </span>
-                <span id='impuesto'>{impuesto}</span>
+                <span className="font-weight-bold" id='impuesto'>{impuesto}</span>
               </p>
             </Alert>
           </Col>
